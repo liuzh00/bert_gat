@@ -47,8 +47,8 @@ class ContextEncoder(nn.Module):
 
         maxlen = self.args.max_length
         text = text[:, :maxlen]
-        bert_spc_out, _ = self.bert(text_bert_indices, token_type_ids=bert_segments_ids, attention_mask=attention_mask,
-                                    return_dict=False)
+        bert_spc_out = self.bert(text_bert_indices, token_type_ids=bert_segments_ids, attention_mask=attention_mask,
+                                  )
         bert_spc_out = self.bert_layernorm(bert_spc_out)
         bert_spc_out = self.bert_drop(bert_spc_out)
 
